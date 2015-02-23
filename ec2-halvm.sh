@@ -49,14 +49,14 @@ KERNEL=aki-919dcaf8 # us-east-1
 
 ${SUDO} mkdir -p ${MNT}
 rm -f ${IMG}
-dd if=/dev/zero of=${IMG} bs=1M count=5
+dd if=/dev/zero of=${IMG} bs=1M count=10
 ${SUDO} mke2fs -F -j ${IMG}
 ${SUDO} mount -o loop ${IMG} ${MNT}
 
 ${SUDO} mkdir -p ${MNT}/boot/grub
 echo default 0 > menu.lst
 echo timeout 1 >> menu.lst
-echo title Mirage >> menu.lst
+echo title HaLVM >> menu.lst
 echo " root (hd0)" >> menu.lst
 echo " kernel /boot/halvm.gz" >> menu.lst
 ${SUDO} mv menu.lst ${MNT}/boot/grub/menu.lst
