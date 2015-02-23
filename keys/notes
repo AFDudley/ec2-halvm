@@ -1,0 +1,5 @@
+openssl genrsa -out halvm-imager0.rsakey 2048
+openssl req -sha256 -new -key halvm-imager0.rsakey -out csr.pem
+openssl x509 -req -days 90 -in csr.pem -signkey halvm-imager0.pem -out halvm-imager0.crt
+openssl rsa -in halvm-imager0.rsakey -outform PEM > halvm-imager0.pem
+openssl rsa -in halvm-imager0.pem -pubout -out halvm-imager0.pub.pem
